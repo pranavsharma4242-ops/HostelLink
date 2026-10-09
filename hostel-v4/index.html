@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hostel desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked">
+  <section id="login" class="login" aria-label="Sign in">
+    <div class="login-art">
+      <div class="logo"><span class="logo-mark" data-icon="key"></span><span class="hostel-name">Hostel desk</span></div>
+      <div><h1>Every bed, guest and complaint in one place.</h1><p>Sign in to manage check-ins, rooms and the front desk.</p></div>
+    </div>
+    <form id="loginForm" class="login-form stack">
+      <div class="tabs login-tabs">
+        <button type="button" data-login="staff" class="on">Staff &amp; admin</button>
+        <button type="button" data-login="guest">Guest</button>
+      </div>
+      <h2 id="loginTitle">Staff sign in</h2>
+      <label>Username<input name="username" autocomplete="username" required autofocus></label>
+      <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+      <p class="form-error" id="loginError" role="alert"></p>
+      <button class="btn">Sign in</button>
+      <p class="muted small" id="loginHint"></p>
+    </form>
+  </section>
+
+  <div class="app">
+    <aside class="side">
+      <div class="logo"><span class="logo-mark" data-icon="key"></span><span class="hostel-name">Hostel desk</span></div>
+      <nav id="nav" aria-label="Main">
+        <button data-view="dashboard" data-icon="home" data-for="staff"><span class="nav-label">Overview</span></button>
+        <button data-view="rooms" data-icon="door" data-for="staff"><span class="nav-label">Rooms</span><span class="badge ok" id="badgeRooms"></span></button>
+        <button data-view="residents" data-icon="users" data-for="staff"><span class="nav-label">Residents</span></button>
+        <button data-view="complaints" data-icon="flag" data-for="staff"><span class="nav-label">Complaints</span><span class="badge bad" id="badgeComplaints"></span></button>
+        <button data-view="admin" data-icon="shield" data-for="admin" hidden><span class="nav-label">Admin</span></button>
+        <button data-view="myStay" data-icon="home" data-for="guest" hidden><span class="nav-label">My stay</span></button>
+        <button data-view="myComplaints" data-icon="flag" data-for="guest" hidden><span class="nav-label">My complaints</span></button>
+        <button data-action="account" data-icon="user" class="mobile-only"><span class="nav-label">Account</span></button>
+      </nav>
+      <button class="cta" data-action="checkin" data-icon="plus" data-for="staff">Check in a guest</button>
+      <button class="user-chip" data-action="account" aria-label="Account">
+        <span class="avatar" id="chipAvatar"></span><span class="chip-text"><b id="chipName"></b><small id="chipRole"></small></span>
+      </button>
+    </aside>
+    <main id="view"></main>
+  </div>
+
+  <button class="fab" data-action="checkin" data-icon="plus" data-for="staff" aria-label="Check in a guest"></button>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="modal">
+    <form id="modalForm" class="stack">
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody" class="stack"></div>
+      <div class="actions end">
+        <button type="button" class="btn ghost" id="modalCancel">Cancel</button>
+        <button class="btn" id="modalSubmit">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
